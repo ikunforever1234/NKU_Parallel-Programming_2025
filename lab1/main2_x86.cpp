@@ -28,8 +28,7 @@ void gettime_normal(int m) {
 
 	QueryPerformanceCounter((LARGE_INTEGER*)&tail);
 	double time_normal = (tail - head) * 1000.0 / freq;
-	cout << "normal时间: " << time_normal << " ms" << endl;
-	cout << result << endl;
+	cout <<"执行"<< m <<"次normal时间: " << time_normal << " ms" << endl;
 }
 
 void gettime_pro(int m) {
@@ -49,8 +48,7 @@ void gettime_pro(int m) {
 
 	QueryPerformanceCounter((LARGE_INTEGER*)&tail);
 	double time_pro = (tail - head) * 1000.0 / freq;
-	cout << "pro时间: " << time_pro << " ms" << endl;
-	cout << result << endl;
+	cout <<"执行"<< m <<"次pro时间: " << time_pro << " ms" << endl;
 }
 
 int main() {
