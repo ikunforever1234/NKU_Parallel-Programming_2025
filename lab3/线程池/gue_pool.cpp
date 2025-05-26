@@ -196,10 +196,9 @@ struct ThreadPool {
     pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
     pthread_cond_t cond = PTHREAD_COND_INITIALIZER;
     atomic<bool> stop;
-    // atomic<int> pending;
     
     // 构造函数
-    ThreadPool(int n) : threads(n), stop(false)/*, pending(0)*/ {
+    ThreadPool(int n) : threads(n), stop(false){
         for (int i = 0; i < n; ++i) {
             pthread_create(&threads[i], nullptr, &ThreadPool::workerEntry, this);
         }
@@ -243,7 +242,6 @@ struct ThreadPool {
             tasks.pop();
             pthread_mutex_unlock(&mutex);
             task();
-            //pending.fetch_sub(1, memory_order_relaxed);
         }
         return nullptr;
     }
@@ -276,13 +274,11 @@ void PriorityQueue::Generate(PT pt)
             a = &m.symbols[m.FindSymbol(pt.content[0])];
         }
         
-        // 并行处理：将segment的所有value分块处理
         int N = pt.max_indices[0];
         int base = guesses.size();
         guesses.resize(base + N);
         
-        // 将任务分成多个块并行处理
-        int T = number;  // 使用4个线程
+        int T = number; 
         int chunk = (N + T - 1) / T;
         for (int t = 0; t < T; ++t) {
             int start = t * chunk;
@@ -339,12 +335,10 @@ void PriorityQueue::Generate(PT pt)
             a = &m.symbols[m.FindSymbol(pt.content[pt.content.size() - 1])];
         }
         
-        // 并行处理：将最后一个segment的所有value分块处理
         int N = pt.max_indices[pt.content.size() - 1];
         int base = guesses.size();
         guesses.resize(base + N);
         
-        // 将任务分成多个块并行处理
         int T = number;
         int chunk = (N + T - 1) / T;
         for (int t = 0; t < T; ++t) {
