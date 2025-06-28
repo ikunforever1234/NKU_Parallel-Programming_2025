@@ -12,4 +12,4 @@
 
     g++ train.cpp md5.cpp main_mpi_try.cpp guessing_mpi_try.cpp -o main -I D:\MPI\Include（替换为你的MPI包Include路径）-L D:\MPI\Lib\x64（替换为你的MPI包x64路径）  -lmsmpi 
 
-    执行命令 mpiexec -n test
+    执行命令 mpiexec -n 4 test
