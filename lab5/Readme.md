@@ -3,6 +3,7 @@
 其他文件未做修改
 
 服务器编译指令为
+
     nvcc --std=c++11 main.cpp train.cpp guessing_cuda.cu md5.cpp -o test
     nvcc --std=c++11 main.cpp train.cpp guessing_cuda.cu md5.cpp -o test -O1
     nvcc --std=c++11 main.cpp train.cpp guessing_cuda.cu md5.cpp -o test -O2
@@ -12,4 +13,5 @@
     nvcc --std=c++11 main.cpp train.cpp guessing_cuda_both.cu md5.cpp -o test -O2
 
 执行命令 
+
     ./test
