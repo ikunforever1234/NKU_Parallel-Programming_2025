@@ -171,6 +171,29 @@ void PriorityQueue::PopNext()
     }
 }
 
+//去除概率降序环节
+//void PriorityQueue::PopNext() 
+// {
+//     int B = min((int)priority.size(), MAX_PTS_BATCH);
+//     vector<PT> batch(priority.begin(), priority.begin() + B);
+//     priority.erase(priority.begin(), priority.begin() + B);
+    
+//     for (auto &pt : batch) 
+//     {
+//         Generate(pt);
+//     }
+    
+//     for (auto &pt : batch) 
+//     {
+//         auto newpts = pt.NewPTs();
+//         for (auto &n : newpts) 
+//         {
+//             CalProb(n);
+//             priority.push_back(n); 
+//         }
+//     }
+// }
+
 // 全局缓冲
 static char* global_valbuf = nullptr;
 static int*  global_vallens = nullptr;
